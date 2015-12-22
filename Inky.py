@@ -7,5 +7,8 @@ class Inky(Ghost):
         super().__init__('Inky', LIGHT_BLUE, pos)
 
     def Update(self, entities, grid):
-        assert 'Pac' in entities, 'Pacman must be in the dictionary'
-        pass
+        assert 'Pac' in entities and 'Blinky' in entities, 'Pacman and Blinky must be in the dictionary'
+        pac = entities['Pac'].pos
+        blinky = entities['Blinky'].pos
+
+

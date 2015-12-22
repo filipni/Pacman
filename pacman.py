@@ -35,17 +35,18 @@ level = Level(levelData)
 
 # Create pacman and the ghosts
 pac = MovingObject(YELLOW, (1, 3))
-#blinky = Blinky((11, 13))
+blinky = Blinky((10, 13))
 pinky = Pinky((11, 13))
 
-entities = {'Pac': pac, pinky.name: pinky}
-ghosts = [pinky]
+entities = {'Pac': pac, pinky.name: pinky, blinky.name: blinky}
+ghosts = [pinky, blinky] # Don't forget to add ghosts to this list AND entities above!
 
 #The game loop
 while True:
     # Handle events
     for event in pygame.event.get():
         if event.type == QUIT:
+            logging.debug('End of program')
             sys.exit()
         elif event.type == pygame.KEYDOWN:
             handleInput(event, pac)
@@ -69,6 +70,6 @@ while True:
     for ghost in ghosts:
         if ghost.rect.colliderect(pac.rect):
             print('Game Over!')
+            logging.debug('End of program')
             sys.exit()
 
-logging.debug('End of program')
