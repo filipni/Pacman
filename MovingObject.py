@@ -33,6 +33,21 @@ class MovingObject():
             self.pos = (1, self.pos[1])
             self.calcRect()
 
+    def CheckPosBounds(self, pos):
+        y = pos[0]
+        x = pos[1]
+
+        if y > GRID_HEIGHT - 1:
+            y = GRID_HEIGHT - 1
+        elif y < 0:
+            y = 0
+
+        if x > GRID_WIDTH - 1:
+            y = GRID_WIDTH - 1
+        elif x < 0:
+            x = 0
+
+        return (y, x)
 
     def calcRect(self):
         self.rect = self.rect = pygame.Rect(self.pos[1] * BLOCK_SIZE, self.pos[0] * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE)
