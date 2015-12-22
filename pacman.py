@@ -6,6 +6,7 @@ from MovingObject import *
 from Level import *
 from Ghost import *
 from Blinky import *
+from Pinky import *
 
 def handleInput(event, pac):
     pac.prevDir = pac.direction
@@ -34,9 +35,11 @@ level = Level(levelData)
 
 # Create pacman and the ghosts
 pac = MovingObject(YELLOW, (1, 3))
-blinky = Blinky((11, 13))
+#blinky = Blinky((11, 13))
+pinky = Pinky((11, 13))
 
-entities = [pac, blinky]
+entities = {'Pac': pac, pinky.name: pinky}
+ghosts = [pinky]
 
 #The game loop
 while True:
@@ -48,12 +51,14 @@ while True:
             handleInput(event, pac)
 
     pac.Move(level.levelMap)
-    blinky.chooseDest(pac.pos, level.levelMap)
-    blinky.Move(level.levelMap)
+
+    for ghost in ghosts:
+        ghost.Update(entities, level.levelMap)
+        ghost.Move(level.levelMap)
 
     # Draw
     DISPSURF.blit(level.image, (0,0))
-    for ent in entities:
+    for ent in entities.values():
         pygame.draw.rect(DISPSURF, ent.color, ent.rect)
 
     # Update display
@@ -61,8 +66,9 @@ while True:
     FPSCLOCK.tick(FPS)
 
     # End the game if any of the ghosts have caught pacman
-    if pac.rect.colliderect(blinky.rect):
-        print('Game Over!')
-        break
+    for ghost in ghosts:
+        if ghost.rect.colliderect(pac.rect):
+            print('Game Over!')
+            sys.exit()
 
 logging.debug('End of program')
