@@ -7,6 +7,7 @@ from Level import *
 from Ghost import *
 from Blinky import *
 from Pinky import *
+from Inky import *
 
 def handleInput(event, pac):
     pac.prevDir = pac.direction
@@ -35,11 +36,12 @@ level = Level(levelData)
 
 # Create pacman and the ghosts
 pac = MovingObject(YELLOW, (1, 3))
-blinky = Blinky((10, 13))
+blinky = Blinky((11, 13))
 pinky = Pinky((11, 13))
+inky = Inky((11,13))
 
-entities = {'Pac': pac, pinky.name: pinky, blinky.name: blinky}
-ghosts = [pinky, blinky] # Don't forget to add ghosts to this list AND entities above!
+entities = {'Pac': pac, pinky.name: pinky, blinky.name: blinky, inky.name: inky}
+ghosts = [pinky, blinky, inky] # Don't forget to add ghosts to this list AND entities above!
 
 #The game loop
 while True:
