@@ -1,0 +1,30 @@
+# Colors
+BLACK = (0,0,0)
+WHITE = (255,255,255)
+RED = (255,0,0)
+GREEN = (0,255,0)
+BLUE = (0,0,255)
+PINK = (255, 185, 255)
+LIGHT_BLUE = (0, 255, 255)
+ORANGE = (254, 184, 81)
+YELLOW = (255, 255, 0)
+
+# Entity sizes
+BLOCK_SIZE = 30
+
+# Borders and window dimensions
+GRID_WIDTH = 28
+GRID_HEIGHT = 30
+
+WINDOW_WIDTH = GRID_WIDTH * BLOCK_SIZE
+WINDOW_HEIGHT = GRID_HEIGHT * BLOCK_SIZE
+
+# Misc
+FPS = 30
+PAC_SPEED = BLOCK_SIZE / 5
+
+# Movement
+UP = 0
+DOWN = 1
+LEFT = 2
+RIGHT = 3
