@@ -1,6 +1,7 @@
 import pygame
 from consts import *
 from Block import *
+from abc import ABCMeta, abstractmethod
 
 class MovingObject():
     def __init__(self,color,pos):
@@ -10,6 +11,10 @@ class MovingObject():
         self.pos = pos
         self.color = color
         self.calcRect()
+
+    @abstractmethod
+    def Update(self, event, entities, grid):
+        pass
 
     # Wrapping for the real move method to improve the steering
     def Move(self, grid):

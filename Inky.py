@@ -3,8 +3,8 @@ from Ghost import *
 
 class Inky(Ghost):
 
-    def __init__(self, pos):
-        super().__init__('Inky', LIGHT_BLUE, pos, (31, 27))
+    def __init__(self):
+        super().__init__('Inky', LIGHT_BLUE, GHOST_START, INKY_HOME)
 
     def ChaseUpdate(self, entities):
         assert 'Pac' in entities and 'Blinky' in entities, 'Pacman and Blinky must be in the dictionary'

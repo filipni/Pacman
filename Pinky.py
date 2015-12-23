@@ -3,8 +3,8 @@ from Ghost import *
 
 class Pinky(Ghost):
 
-    def __init__(self, pos):
-        super().__init__('Pinky', PINK, pos, (0, 1))
+    def __init__(self):
+        super().__init__('Pinky', PINK, GHOST_START, PINKY_HOME)
 
     def ChaseUpdate(self, entities):
         assert 'Pac' in entities, 'Pacman must be in the dictionary'

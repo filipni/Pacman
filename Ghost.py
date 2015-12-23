@@ -48,7 +48,7 @@ class Ghost(MovingObject):
             dirs.append((grid[y][x-1], LEFT))
         return dirs
 
-    def Update(self, entities, grid):
+    def Update(self, event, entities, grid):
         dest = None
         if self.scatter:
             dest = self.homePos

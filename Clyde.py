@@ -3,8 +3,8 @@ from Ghost import *
 
 class Clyde(Ghost):
 
-    def __init__(self, pos):
-        super().__init__('Clyde', ORANGE, pos, (31, 0))
+    def __init__(self):
+        super().__init__('Clyde', ORANGE, GHOST_START, CLYDE_HOME)
 
     def ChaseUpdate(self, entities):
         pac = entities['Pac']
