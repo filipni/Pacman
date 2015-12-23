@@ -4,9 +4,9 @@ from Ghost import *
 class Pinky(Ghost):
 
     def __init__(self, pos):
-        super().__init__('Pinky', PINK, pos)
+        super().__init__('Pinky', PINK, pos, (0, 1))
 
-    def Update(self, entities, grid):
+    def ChaseUpdate(self, entities):
         assert 'Pac' in entities, 'Pacman must be in the dictionary'
 
         pac = entities['Pac']
@@ -23,4 +23,4 @@ class Pinky(Ghost):
         else:
             x += 4
 
-        super().chooseDest(self.CheckPosBounds((y,x)), grid)
+        return self.CheckPosBounds((y,x))

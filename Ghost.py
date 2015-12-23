@@ -7,10 +7,11 @@ class Ghost(MovingObject):
 
     __metaclass__ = ABCMeta
 
-    def __init__(self, name, color, pos):
+    def __init__(self, name, color, pos, homePos):
         super().__init__(color, pos)
         self.name = name
-        destination = None
+        self.homePos = homePos
+        self.scatter = False
 
     def chooseDest(self, destPos, grid):
         options = self.directionAlts(grid) # options is a list of tuples containing a block and its direction
@@ -47,7 +48,14 @@ class Ghost(MovingObject):
             dirs.append((grid[y][x-1], LEFT))
         return dirs
 
-    @abstractmethod
     def Update(self, entities, grid):
-        pass
+        dest = None
+        if self.scatter:
+            dest = self.homePos
+        else:
+            dest = self.ChaseUpdate(entities)
+        self.chooseDest(dest, grid)
 
+    @abstractmethod
+    def ChaseUpdate(self, entities):
+        pass

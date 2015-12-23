@@ -5,9 +5,9 @@ import logging
 class Blinky(Ghost):
 
     def __init__(self, pos):
-        super().__init__('Blinky', RED, pos)
+        super().__init__('Blinky', RED, pos, (0, 26))
 
-    def Update(self, entities, grid):
+    def ChaseUpdate(self, entities):
         assert 'Pac' in entities, 'Pacman must be in the dictionary' 
-        super().chooseDest(entities['Pac'].pos, grid)
+        return entities['Pac'].pos
 

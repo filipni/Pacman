@@ -8,6 +8,7 @@ from Ghost import *
 from Blinky import *
 from Pinky import *
 from Inky import *
+from Clyde import *
 
 def handleInput(event, pac):
     pac.prevDir = pac.direction
@@ -39,9 +40,11 @@ pac = MovingObject(YELLOW, (1, 3))
 blinky = Blinky((11, 13))
 pinky = Pinky((11, 13))
 inky = Inky((11,13))
+clyde = Clyde((11,13))
 
-entities = {'Pac': pac, pinky.name: pinky, blinky.name: blinky, inky.name: inky}
-ghosts = [pinky, blinky, inky] # Don't forget to add ghosts to this list AND entities above!
+entities = {'Pac': pac, clyde.name: clyde, blinky.name: blinky, inky.name: inky, pinky.name: pinky}
+ghosts = [clyde, blinky, inky, pinky] # Don't forget to add ghosts to this list AND entities above!
+blinky.scatter, inky.scatter, pinky.scatter, clyde.scatter = True, True, True, True
 
 #The game loop
 while True:
