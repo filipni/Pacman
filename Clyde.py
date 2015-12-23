@@ -9,7 +9,7 @@ class Clyde(Ghost):
     def ChaseUpdate(self, entities):
         pac = entities['Pac']
         distToPac = self.calcDist(self.pos, pac.pos)
-        if distToPac > BLOCK_SIZE * 8:
+        if distToPac > 8:
             return pac.pos
         else:
             return self.homePos

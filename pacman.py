@@ -37,14 +37,14 @@ level = Level(levelData)
 
 # Create pacman and the ghosts
 pac = MovingObject(YELLOW, (1, 3))
-blinky = Blinky((11, 13))
-pinky = Pinky((11, 13))
-inky = Inky((11,13))
+#blinky = Blinky((11, 13))
+#pinky = Pinky((11, 13))
+#inky = Inky((11,13))
 clyde = Clyde((11,13))
 
-entities = {'Pac': pac, clyde.name: clyde, blinky.name: blinky, inky.name: inky, pinky.name: pinky}
-ghosts = [clyde, blinky, inky, pinky] # Don't forget to add ghosts to this list AND entities above!
-blinky.scatter, inky.scatter, pinky.scatter, clyde.scatter = True, True, True, True
+entities = {'Pac': pac, clyde.name: clyde} #, blinky.name: blinky, inky.name: inky, pinky.name: pinky}
+ghosts = [clyde] #, blinky, inky, pinky] # Don't forget to add ghosts to this list AND entities above!
+#blinky.scatter, inky.scatter, pinky.scatter, clyde.scatter = True, True, True, True
 
 #The game loop
 while True:
