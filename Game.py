@@ -75,6 +75,9 @@ class Game():
         self.DISPSURF.blit(self.level.image, (0, 0))
         for ent in self.entities.values():
             pygame.draw.rect(self.DISPSURF, ent.color, ent.rect)
+            # Draw the ghosts' destinations (used for debug)
+            if ent.name != 'Pac':
+                pygame.draw.ellipse(self.DISPSURF, ent.color, pygame.Rect(ent.dest[1] * BLOCK_SIZE, ent.dest[0] * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE), 2)
 
         # Update display
         pygame.display.update()

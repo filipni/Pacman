@@ -16,37 +16,45 @@ class Ghost(MovingObject):
 
     def chooseDest(self, grid):
         options = self.directionAlts(grid) # options is a list of tuples containing a block and its direction
-        bestWay =  None
+        bestBlock =  None
+        bestDir = None
         minDist = 9999 # Initial value represents infinity
 
         # Find the best way based on the distance in a straightline from each option to pacman
-        for way in options:
-            dist = self.calcDist(self.dest, way[0].pos)
-            if bestWay == None or dist < minDist:
+        for direction, block in options.items():
+            dist = self.calcDist(self.dest, block.pos)
+            if bestBlock == None or dist < minDist:
                 minDist = dist
-                bestWay = way
+                bestBlock = block
+                bestDir = direction
 
         # The ghost can only turn if it's aligned correctly
-        if self.alignedV(self.rect, bestWay[0].rect) and (bestWay[1] == UP or bestWay[1] == DOWN):
-            self.direction = bestWay[1]
+        if self.alignedV(self.rect, bestBlock.rect) and (bestDir == UP or bestDir == DOWN):
+            self.direction = bestDir
 
-        elif self.alignedH(self.rect, bestWay[0].rect) and (bestWay[1] == LEFT or bestWay[1] == RIGHT):
-            self.direction = bestWay[1]
+        elif self.alignedH(self.rect, bestBlock.rect) and (bestDir == LEFT or bestDir == RIGHT):
+            self.direction = bestDir
 
     def calcDist(self, pos1, pos2):
         return math.hypot(pos1[1]-pos2[1], pos1[0]-pos2[0])
 
     def directionAlts(self, grid):
-        dirs = []
+        dirs = {}
         y, x = self.pos[0], self.pos[1]
+
         if not grid[y+1][x].solid and self.direction != UP:
-            dirs.append((grid[y+1][x], DOWN))
+            dirs[DOWN] = grid[y+1][x]
         if not grid[y-1][x].solid and self.direction != DOWN:
-            dirs.append((grid[y-1][x], UP))
+            dirs[UP] = grid[y-1][x]
         if not grid[y][x+1].solid and self.direction != LEFT:
-            dirs.append((grid[y][x+1], RIGHT))
+            dirs[RIGHT] = grid[y][x+1]
         if not grid[y][x-1].solid and self.direction != RIGHT:
-            dirs.append((grid[y][x-1], LEFT))
+            dirs[LEFT] = grid[y][x-1]
+
+        # Some blocks doesn't allow the ghosts to turn upwards
+        if grid[y][x].noUp:
+            dirs.pop(UP, None)
+
         return dirs
 
     def Update(self, event, entities, grid):

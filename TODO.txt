@@ -1,4 +1,4 @@
-* Draw each ghost's destination for debugging
 * Create a vector-object?
 * Remove hardcoded names from the Game class
 * Is the frame rate correct?
+* Change collision detection to use the grid for comparison

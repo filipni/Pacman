@@ -21,11 +21,13 @@ class Level:
             for j in range(GRID_WIDTH):
                 if self.rows[i][j] == '*':
                     # Append new block
-                    blocks.append(Block(pygame.Rect(myRect), BLUE, True, False, (i, j)))
+                    blocks.append(Block(pygame.Rect(myRect), BLUE, True, False, False,  (i, j)))
                 elif self.rows[i][j] == 'c':
-                    blocks.append(Block(pygame.Rect(myRect), WHITE, False, True, (i, j)))
+                    blocks.append(Block(pygame.Rect(myRect), WHITE, False, True, False,  (i, j)))
+                elif self.rows[i][j] == 'u':
+                    blocks.append(Block(pygame.Rect(myRect), WHITE, False, True, True, (i, j)))
                 else:
-                    blocks.append(Block(pygame.Rect(myRect), WHITE, False, False, (i, j)))
+                    blocks.append(Block(pygame.Rect(myRect), WHITE, False, False, False, (i, j)))
                 myRect.left += BLOCK_SIZE
             self.levelMap.append(blocks)
             myRect.left = 0
