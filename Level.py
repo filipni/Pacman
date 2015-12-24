@@ -9,11 +9,12 @@ class Level:
         self.y = 0
         self.rows = level.split()
         self.buildLevel()
+        self.image = pygame.image.load('level1.png')
+        self.image = pygame.transform.scale(self.image, (WINDOW_WIDTH, WINDOW_HEIGHT))
 
     # Builds and draws the grid
     def buildLevel(self):
         self.levelMap = []
-        self.image = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT))
         myRect = pygame.Rect(self.x, self.y, BLOCK_SIZE, BLOCK_SIZE)
         for i in range(GRID_HEIGHT):
             blocks = []
@@ -21,8 +22,6 @@ class Level:
                 if self.rows[i][j] == '*':
                     # Append new block
                     blocks.append(Block(pygame.Rect(myRect), BLUE, True, (i, j)))
-                    # Draw to surface
-                    pygame.draw.rect(self.image, BLUE, myRect)
                 else:
                     blocks.append(Block(pygame.Rect(myRect), WHITE, False, (i, j)))
                 myRect.left += BLOCK_SIZE

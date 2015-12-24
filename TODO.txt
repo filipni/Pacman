@@ -1,7 +1,5 @@
 * Optimize decision-making for ghosts
 * Draw each ghost's destination for debugging
-* Distance between positions should be calculated from each block's center point
-* Encapsulate data in the ghosts' Update() method. Mainly improve the code by just giving them access to each entities position (instead of the whole object).
 * Create a vector-object?
 * Remove hardcoded names from the Game class
 * Is the frame rate correct?

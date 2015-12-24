@@ -13,5 +13,6 @@ while not game.quit:
     game.Update()
     game.Draw()
 
+game.Quit()
 logging.debug('End of program')
 

@@ -72,7 +72,7 @@ class Game():
 
     def Draw(self):
         # Draw
-        self.DISPSURF.blit(self.level.image, (0,0))
+        self.DISPSURF.blit(self.level.image, (0, 0))
         for ent in self.entities.values():
             pygame.draw.rect(self.DISPSURF, ent.color, ent.rect)
 
@@ -80,3 +80,5 @@ class Game():
         pygame.display.update()
         self.FPSCLOCK.tick(FPS) # Gives us the right FPS
 
+    def Quit(self):
+        pass
