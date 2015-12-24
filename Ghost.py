@@ -12,15 +12,16 @@ class Ghost(MovingObject):
         self.name = name
         self.homePos = homePos
         self.scatter = False
+        self.dest = (0, 0)
 
-    def chooseDest(self, destPos, grid):
+    def chooseDest(self, grid):
         options = self.directionAlts(grid) # options is a list of tuples containing a block and its direction
         bestWay =  None
         minDist = 9999 # Initial value represents infinity
 
         # Find the best way based on the distance in a straightline from each option to pacman
         for way in options:
-            dist = self.calcDist(destPos, way[0].pos)
+            dist = self.calcDist(self.dest, way[0].pos)
             if bestWay == None or dist < minDist:
                 minDist = dist
                 bestWay = way
@@ -49,12 +50,13 @@ class Ghost(MovingObject):
         return dirs
 
     def Update(self, event, entities, grid):
-        dest = None
-        if self.scatter:
-            dest = self.homePos
-        else:
-            dest = self.ChaseUpdate(entities)
-        self.chooseDest(dest, grid)
+        block = grid[ self.pos[0] ][ self.pos[1] ]
+        if block.cross:
+            if self.scatter:
+                self.dest = self.homePos
+            else:
+                self.ChaseUpdate(entities)
+        self.chooseDest(grid)
 
     @abstractmethod
     def ChaseUpdate(self, entities):

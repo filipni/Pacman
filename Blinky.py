@@ -9,5 +9,5 @@ class Blinky(Ghost):
 
     def ChaseUpdate(self, entities):
         assert 'Pac' in entities, 'Pacman must be in the dictionary' 
-        return entities['Pac'].pos
+        self.dest = entities['Pac'].pos
 

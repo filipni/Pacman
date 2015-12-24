@@ -10,6 +10,6 @@ class Clyde(Ghost):
         pac = entities['Pac']
         distToPac = self.calcDist(self.pos, pac.pos)
         if distToPac > 8:
-            return pac.pos
+            self.dest = pac.pos
         else:
-            return self.homePos
+            self.dest = self.homePos

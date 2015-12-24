@@ -20,5 +20,5 @@ class Inky(Ghost):
         y = blinky.pos[0] + diffY * 2
         x = blinky.pos[1] + diffX * 2
 
-        return self.CheckPosBounds((y, x))
+        self.dest = self.CheckPosBounds((y, x))
 

@@ -1,4 +1,3 @@
-* Optimize decision-making for ghosts
 * Draw each ghost's destination for debugging
 * Create a vector-object?
 * Remove hardcoded names from the Game class

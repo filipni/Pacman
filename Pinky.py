@@ -23,4 +23,4 @@ class Pinky(Ghost):
         else:
             x += 4
 
-        return self.CheckPosBounds((y,x))
+        self.dest = self.CheckPosBounds((y,x))
