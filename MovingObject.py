@@ -11,6 +11,7 @@ class MovingObject():
         self.pos = pos
         self.color = color
         self.calcRect()
+        self.prevBlock = None
 
     @abstractmethod
     def Update(self, event, entities, grid):
@@ -66,6 +67,7 @@ class MovingObject():
                     self.rect.top = nextBlock.rect.bottom
                     return False
             if self.rect.y < nextBlock.rect.y + BLOCK_SIZE / 2:
+                self.prevPos = self.pos
                 self.pos = (self.pos[0] - 1, self.pos[1])
 
         elif direction == DOWN:
@@ -76,6 +78,7 @@ class MovingObject():
                     self.rect.bottom = nextBlock.rect.top
                     return False
             if self.rect.bottom > (nextBlock.rect.top + BLOCK_SIZE / 2):
+                self.prevPos = self.pos
                 self.pos = (self.pos[0] + 1, self.pos[1])
 
         elif direction == LEFT:
@@ -86,6 +89,7 @@ class MovingObject():
                     self.rect.left = nextBlock.rect.right
                     return False
             if self.rect.left < (nextBlock.rect.x + BLOCK_SIZE / 2):
+                self.prevPos = self.pos
                 self.pos = self.pos[0], self.pos[1] - 1
 
         elif direction == RIGHT:
@@ -96,6 +100,7 @@ class MovingObject():
                     self.rect.right = nextBlock.rect.left
                     return False
             if self.rect.right > nextBlock.rect.x + BLOCK_SIZE / 2:
+                self.prevPos = self.pos
                 self.pos = (self.pos[0], self.pos[1] + 1)
         else:
             return False

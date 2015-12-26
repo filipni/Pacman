@@ -17,7 +17,7 @@ class Ghost(MovingObject):
     def chooseDest(self, grid):
         options = self.directionAlts(grid) # options is a list of tuples containing a block and its direction
         bestBlock =  None
-        bestDir = None
+        bestDir = -1
         minDist = 9999 # Initial value represents infinity
 
         # Find the best way based on the distance in a straightline from each option to pacman
@@ -59,7 +59,7 @@ class Ghost(MovingObject):
 
     def Update(self, event, entities, grid):
         block = grid[ self.pos[0] ][ self.pos[1] ]
-        if block.cross:
+        if block.cross and (self.prevPos == None or self.pos != self.prevPos): # Only update position if we enter a new crossing
             if self.scatter:
                 self.dest = self.homePos
             else:
