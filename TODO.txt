@@ -1,2 +1,1 @@
-* Create a vector-object?
 * Remove hardcoded names from the Game class

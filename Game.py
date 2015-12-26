@@ -42,7 +42,7 @@ class Game():
 
         # End the game if any of the ghosts have caught pacman
         for ent in self.entities.values():
-            if ent.name != 'Pac' and ent.rect.colliderect(self.pac.rect):
+            if ent.name != 'Pac' and ent.pos == self.pac.pos:
                 print('Game Over!')
                 print('Killed by: ' + ent.name)
                 print('Time survived: ' + str(pygame.time.get_ticks()/1000) + ' seconds')

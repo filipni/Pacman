@@ -8,7 +8,6 @@ class Pacman(MovingObject):
 
     def Update(self, event, entities, grid):
         if event != None and event.type == pygame.KEYDOWN:
-                self.prevDir = self.direction
                 if event.key == pygame.K_UP:
                         self.direction = UP
                 elif event.key == pygame.K_DOWN:

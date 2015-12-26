@@ -20,7 +20,7 @@ class MovingObject():
     # Wrapping for the real move method to improve the steering
     def Move(self, grid):
         if self.__Move(self.direction, grid):
-            self.prevDir = None
+            self.prevDir = self.direction
         else:
             self.__Move(self.prevDir, grid)
         self.CheckBounds()
